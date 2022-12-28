@@ -272,4 +272,4 @@ const UpdateReservedWaitingMinutes: React.FC<UpdateReservedProps> = ({
 };
 
 export { UpdateCafeStatus };
-export type { CafeStatus };
+export type { CafeStatus, Table };
