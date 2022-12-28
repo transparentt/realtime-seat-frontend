@@ -1,0 +1,9 @@
+{
+  "name": "とうめい",
+  "snsID": "trransparent",
+  "sns": "twitter",
+  "role": "user",
+  "cafeID": [],
+  "accessToken": "accessTokenABCDE",
+  "refreshToken": "refreshTokenABCDE"
+}
