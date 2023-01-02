@@ -54,10 +54,8 @@ const updateUser = (conn: r.Connection, user: User) => {
   }
 };
 
-const deleteUser = (conn: r.Connection, user: User) => {
-  if (user.id) {
-    return r.db(dbName).table(userPath).get(user.id).delete().run(conn);
-  }
+const deleteUser = (conn: r.Connection, ulid: string) => {
+  return r.db(dbName).table(userPath).get(ulid).delete().run(conn);
 };
 
 const getUserByULID = (conn: r.Connection, ulid: string) => {

@@ -1,0 +1,1 @@
+curl -X DELETE http://localhost:3000/api/v1/users/01GNCSEARPRWBNX9QZMNA5E1B9 |  python3 -m json.tool --indent 1 --no-ensure-ascii

@@ -1,0 +1,1 @@
+curl -X GET http://localhost:3000/api/v1/users/01GNCSNSXN704J1MWYPGJM5NB8 |  python3 -m json.tool --indent 1 --no-ensure-ascii
