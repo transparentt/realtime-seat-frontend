@@ -5,18 +5,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (
-    process.env.CLIENT_ID &&
-    process.env.CLIENT_SECRET &&
-    process.env.CALLBACK_URL
-  ) {
+  if (process.env.CLIENT_ID && process.env.CLIENT_SECRET && process.env.HOST) {
     const client = new TwitterApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
     });
 
+    console.log(process.env.HOST);
+
     const { url, codeVerifier, state } = client.generateOAuth2AuthLink(
-      process.env.CALLBACK_URL,
+      `${process.env.HOST}/api/v1/twitter-callback`,
       { scope: ["tweet.read", "users.read", "offline.access"] }
     );
 

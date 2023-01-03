@@ -30,7 +30,7 @@ export default async function handler(
   if (
     process.env.CLIENT_ID &&
     process.env.CLIENT_SECRET &&
-    process.env.CALLBACK_URL &&
+    process.env.HOST &&
     typeof code === "string" &&
     codeVerifier
   ) {
@@ -47,7 +47,7 @@ export default async function handler(
     } = await client.loginWithOAuth2({
       code,
       codeVerifier,
-      redirectUri: process.env.CALLBACK_URL,
+      redirectUri: `${process.env.HOST}/api/v1/twitter-callback`,
     });
 
     const loggedInfo = await loggedClient.v2.me();
@@ -57,6 +57,7 @@ export default async function handler(
       `refreshToken=${refreshToken}; HttpOnly`,
       `expiresIn=${expiresIn};`,
     ]);
-    res.redirect("https://c5c3-2409-10-2b00-4600-da07-00-1001.jp.ngrok.io/");
+
+    process.env.HOST ? res.redirect(process.env.HOST) : "";
   }
 }

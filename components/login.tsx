@@ -11,13 +11,12 @@ import {
 
 const SignInWithTwitter: React.FC = () => {
   const queryClient = useQueryClient();
+  const host = process.env.HOST ? process.env.HOST : "";
   const { isLoading, isError, data, error } = useQuery(
     ["signInWithTwitter"],
     async () => {
       return axios
-        .get<{ url: string }>(
-          "https://c5c3-2409-10-2b00-4600-da07-00-1001.jp.ngrok.io/api/v1/twitter-link"
-        )
+        .get<{ url: string }>(`${host}/api/v1/twitter-link`)
         .catch((response) => {
           response.data;
         });
@@ -30,7 +29,7 @@ const SignInWithTwitter: React.FC = () => {
   return (
     <Link href={data ? data.data.url : ""}>
       <Image
-        src="/sign-in-with-twitter_waifu2x_art_noise1_scale.png"
+        src="/sign-in-with-twitter.png"
         alt="Sign in with Twitter"
         width={158}
         height={28}
