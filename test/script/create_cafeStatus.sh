@@ -1,0 +1,1 @@
+curl -X POST http://localhost:3000/api/v1/cafeStatuses -d @./test/json/create_cafeStatus.json -H "Content-Type: application/json" |  python3 -m json.tool --indent 1 --no-ensure-ascii

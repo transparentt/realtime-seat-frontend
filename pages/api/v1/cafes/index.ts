@@ -34,6 +34,7 @@ const createCafeHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     const failed = CafeZod.safeParse(req.body);
     res.status(400).json(failed);
+    return;
   }
 
   const parsed = CafeZod.parse(req.body);
@@ -81,6 +82,7 @@ const updateCafeHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     const failed = CafeZod.safeParse(req.body);
     res.status(400).json(failed);
+    return;
   }
   const parsed = CafeZod.parse(req.body);
 

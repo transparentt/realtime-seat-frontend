@@ -33,10 +33,11 @@ const createCafeStatusHandler = async (
 ) => {
   // Validate request with Zod
   try {
-    CafeStatusZod.parse(req.body);
+    CafeStatusZod.pick({ cafeID: true }).parse(req.body);
   } catch (e) {
-    const failed = CafeStatusZod.safeParse(req.body);
+    const failed = CafeStatusZod.pick({ cafeID: true }).safeParse(req.body);
     res.status(400).json(failed);
+    return;
   }
 
   const parsed = CafeStatusZod.pick({ cafeID: true }).parse(req.body);
@@ -89,6 +90,7 @@ const updateCafeStatusHandler = async (
   } catch (e) {
     const failed = CafeStatusZod.safeParse(req.body);
     res.status(400).json(failed);
+    return;
   }
   const parsed = CafeStatusZod.parse(req.body);
 

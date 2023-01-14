@@ -34,6 +34,7 @@ const createUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     const failed = UserZod.safeParse(req.body);
     res.status(400).json(failed);
+    return;
   }
 
   const parsed = UserZod.parse(req.body);
@@ -87,6 +88,7 @@ const updateUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     const failed = UserZod.safeParse(req.body);
     res.status(400).json(failed);
+    return;
   }
   const parsed = UserZod.parse(req.body);
 
