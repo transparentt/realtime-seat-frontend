@@ -1,0 +1,1 @@
+curl -X DELETE http://localhost:3000/api/v1/cafes/01GPRCNECG15009KYWGRB9X3FP |  python3 -m json.tool --indent 1 --no-ensure-ascii
